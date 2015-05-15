@@ -5,7 +5,7 @@ class TwilioController < ApplicationController
 
   def receive_call
     response = Twilio::TwiML::Response.new do |r|
-      r.Say "Welcome to NARRATIVES OF DISPLACmeNT MURAL", :voice => 'man'
+      r.Say "Welcome to the NARRATIVES OF DISPLACmeNT", :voice => 'man'
       response_main_decision_tree(r)
     end
     render :xml => response.text, :status => 200

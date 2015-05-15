@@ -32,10 +32,22 @@ class TwilioController < ApplicationController
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/Nietos1.mp3'
       elsif params[:Digits].to_i == 2 #Community Connection
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/TomP2.mp3'
-      elsif
+      elsif params[:Digits].to_i == 3
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/Claudia3.mp3'
-      else
+      elsif params[:Digits].to_i == 4
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/PaulT4.mp3'
+      elsif params[:Digits].to_i == 5 #Community Connection
+        r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/LisaG5.mp3'
+      elsif params[:Digits].to_i == 6
+        r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/RenitaV6.mp3'
+      elsif params[:Digits].to_i == 7
+        r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/BenitoS7.mp3'
+      elsif params[:Digits].to_i == 8
+        r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/MartinaA8.mp3'
+      elsif params[:Digits].to_i == 9
+        r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/Rio9.mp3'
+      else
+        r.say "Can you try to call again?"
       end
     end
     render :xml => response.text, :status => 200
@@ -55,10 +67,10 @@ class TwilioController < ApplicationController
     r.Gather :timeout => 10, :numDigits => 1, :finishOnKey => '*', :action => receive_main_decision_tree_twilio_path do
       options = []
       options << 'Nietos'
-      options += ['Tom', 'Claudia','Paul']
+      options += ['Tom', 'Claudia','Paul', 'Lisa','Renita','Benito','Martina','Rio']
       c = 1
       options.each do |o|
-        r.Say "Press #{c} to #{o}", :voice => 'man'
+        r.Say "Press #{c} to listen to #{o}", :voice => 'man'
         r.Pause :length => 1
         c += 1
       end

@@ -15,23 +15,31 @@ class TwilioController < ApplicationController
     response = Twilio::TwiML::Response.new do |r|
       # Telegroup meeting (conference)
       if params[:Digits].to_i == 1
+        r.Say 'You selected Nietos story'
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/Nietos1.mp3'
-      elsif params[:Digits].to_i == 2 #Community Connection
+      elsif params[:Digits].to_i == 2 
+        r.Say 'You selected Toms story'
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/TomP2.mp3'
       elsif params[:Digits].to_i == 3
         r.Say 'You selected Claudias story'
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/Claudia3.mp3'
       elsif params[:Digits].to_i == 4
+        r.Say 'You selected Pauls story'
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/PaulT4.mp3'
-      elsif params[:Digits].to_i == 5 #Community Connection
+      elsif params[:Digits].to_i == 5 
+        r.Say 'You selected Lisas story'
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/LisaG5.mp3'
       elsif params[:Digits].to_i == 6
+        r.Say 'You selected Renitas story'
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/RenitaV6.mp3'
       elsif params[:Digits].to_i == 7
+        r.Say 'You selected Benitos story'
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/BenitoS7.mp3'
       elsif params[:Digits].to_i == 8
+        r.Say 'You selected Martinas story'
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/MartinaA8.mp3'
       elsif params[:Digits].to_i == 9
+        r.Say 'You selected Rios story'
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/Rio9.mp3'
       else
         r.say "Can you try to call again?"

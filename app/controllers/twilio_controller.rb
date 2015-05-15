@@ -67,10 +67,10 @@ class TwilioController < ApplicationController
     r.Gather :timeout => 10, :numDigits => 1, :finishOnKey => '*', :action => receive_main_decision_tree_twilio_path do
       options = []
       options << 'Nietos'
-      options += ['Tom', 'Claudia','Paul', 'Lisa','Renita','Benito','Martina','Rio']
+      options += ['Toms', 'Claudias','Pauls', 'Lisas','Renitas','Benitos','Martinas','Rios']
       c = 1
       options.each do |o|
-        r.Say "Press #{c} to listen to #{o}", :voice => 'man'
+        r.Say "Press #{c} to listen to #{o} story", :voice => 'man'
         r.Pause :length => 1
         c += 1
       end

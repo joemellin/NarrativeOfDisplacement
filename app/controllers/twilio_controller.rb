@@ -1,20 +1,8 @@
-# Note: all TwiML Response methods use camelCase attribute names, but any API calls using the ruby gem have underscore_attribute names
 
 class TwilioController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
-  #calvin group 4 pin 71508 connection #1
-  #keanu group 4 pin 76232 connection #2
-  #laurel pin 8439
 
-  #margaret group 12 pin 15830 connection #3
-  #diane group 12 pin 75523 connection #1
-  #Arinn pin 1300
-
-  #Twilio number 1 415 682 6186
-
-  
-  # POST from Twilio when we receive a call
   def receive_call
     response = Twilio::TwiML::Response.new do |r|
       r.Say "Welcome to NARRATIVES OF DISPLACmeNT MURAL", :voice => 'man'
@@ -22,8 +10,6 @@ class TwilioController < ApplicationController
     end
     render :xml => response.text, :status => 200
   end
-
-  
 
   def receive_main_decision_tree
     response = Twilio::TwiML::Response.new do |r|
@@ -33,6 +19,7 @@ class TwilioController < ApplicationController
       elsif params[:Digits].to_i == 2 #Community Connection
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/TomP2.mp3'
       elsif params[:Digits].to_i == 3
+        r.Say 'You selected Claudias story'
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/Claudia3.mp3'
       elsif params[:Digits].to_i == 4
         r.Play 'https://s3.amazonaws.com/uploads.getnowapp.co/PaulT4.mp3'
@@ -75,9 +62,5 @@ class TwilioController < ApplicationController
         c += 1
       end
     end
-
   end
-
- 
-
 end

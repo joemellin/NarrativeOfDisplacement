@@ -17,7 +17,7 @@ class TwilioController < ApplicationController
   # POST from Twilio when we receive a call
   def receive_call
     response = Twilio::TwiML::Response.new do |r|
-      r.Say "Welcome to Mission Stories", :voice => 'man'
+      r.Say "Welcome to NARRATIVES OF DISPLACmeNT MURAL", :voice => 'man'
       response_main_decision_tree(r)
     end
     render :xml => response.text, :status => 200
@@ -56,7 +56,7 @@ class TwilioController < ApplicationController
   def receive_sms 
 
     twiml = Twilio::TwiML::Response.new do |r|
-      r.Message "Hi! Call this number to access your group and community connections."
+      r.Message "Hi! Call this number to listen to peoples NARRATIVES of displacement"
     end
     render :xml => twiml.text, :status => 200
   end
